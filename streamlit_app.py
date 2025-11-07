@@ -3,7 +3,7 @@ import pandas as pd
 
 def introduce_myself() :
     st.markdown("# Introduction")
-    st.markdown("## 강영재")
+    st.markdown("## 한줄소개")
     st.write("안녕하세요. 저는 강영재입니다✨")
     st.markdown("### 전공")
     st.write("**주전공**: 영어영문학과")
@@ -42,3 +42,4 @@ with col1:
 
 with col2:
     st.metric(label="이번 학기 학점", value="18", delta="+3학점")
+
