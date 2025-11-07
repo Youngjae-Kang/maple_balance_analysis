@@ -20,26 +20,42 @@ def introduce_myself() :
     st.write("- 책 읽기: 최근에는 윌리엄 해즐릿의 <<혐오의 즐거움에 대하여>>를 읽고 있어요.")
     st.write("- 음악 듣기: 최근에는 데이식스의 '드디어 끝나갑니다'에 빠졌어요!")
 
-introduce_myself()
+
+def time_table():
+    data = {"월": ["재무제표분석과 기업가치평가", "", ""], "화": ["", "행태경제학", "건강경제학"], "수": ["", "", ""], "목": ["", "경제통계학", ""], "금": ["컴퓨팅탐색", "", "정보문화기술입문"]}
+    df = pd.DataFrame(data)
+
+    st.markdown("# 나의 수업 시간표")
+    st.markdown("## 정적 시간표 (st.table)")
+    st.table(df)
+
+    json_data = {"재무제표분석과 기업가치평가": {"교수": "황이석", "강의실": "58동 supexhall"}, "행태경제학": {"교수": "최승주", "강의실": "우석경제관 107호"}, "건강경제학": {"교수": "홍석철", "강의실": "우석경제관 107호"}, "경제통계학": {"교수": "류근관", "강의실": "우석경제관 107호"}, "컴퓨팅 탐색": {"교수": "변해선", "강의실": "26동"}, "정보문화기술입문": {"교수": "은진수", "강의실": "83동"}}
+    st.write("## 수업 정보")
+    st.json(json_data)
+
+    st.write("## 이번학기 요약")
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric(label="수강과목 수", value="6", delta="+1")
+
+    with col2:
+        st.metric(label="이번 학기 학점", value="18", delta="+3학점")
 
 
-data = {"월": ["재무제표분석과 기업가치평가", "", ""], "화": ["", "행태경제학", "건강경제학"], "수": ["", "", ""], "목": ["", "경제통계학", ""], "금": ["컴퓨팅탐색", "", "정보문화기술입문"]}
-df = pd.DataFrame(data)
+selected = "자기소개"
 
-st.markdown("# 나의 수업 시간표")
-st.markdown("## 정적 시간표 (st.table)")
-st.table(df)
+li = ["자기소개", "시간표"]
 
-json_data = {"재무제표분석과 기업가치평가": {"교수": "황이석", "강의실": "58동 supexhall"}, "행태경제학": {"교수": "최승주", "강의실": "우석경제관 107호"}, "건강경제학": {"교수": "홍석철", "강의실": "우석경제관 107호"}, "경제통계학": {"교수": "류근관", "강의실": "우석경제관 107호"}, "컴퓨팅 탐색": {"교수": "변해선", "강의실": "26동"}, "정보문화기술입문": {"교수": "은진수", "강의실": "83동"}}
-st.write("## 수업 정보")
-st.json(json_data)
+st.sidebar.header("자기소개👩‍🦰와 시간표📃")
 
-st.write("## 이번학기 요약")
-col1, col2 = st.columns(2)
+for item in li: # 딕셔너리의 key와 value를 다 가져옴
+    if st.sidebar.button(item, key=item):  # 각 섹션을 버튼으로 표시
+        selected = item # 무엇이 선택됐는지 확인
 
-with col1:
-    st.metric(label="수강과목 수", value="6", delta="+1")
+if selected == "자기소개":
+    introduce_myself()
+elif selected == "시간표":
+    time_table()
 
-with col2:
-    st.metric(label="이번 학기 학점", value="18", delta="+3학점")
 
