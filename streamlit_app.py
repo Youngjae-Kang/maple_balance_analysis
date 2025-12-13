@@ -531,8 +531,20 @@ elif section == "2.3. 그래프":
     st.write("#### 통제 변수 간의 상관관계: 히트맵")
     
     fig_corr, ax_corr = plt.subplots(figsize=(8, 6))
-    sns.heatmap(X_control.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=ax_corr)
-    ax_corr.set_title("스펙 변수 간 상관관계")
+    sns.heatmap(X_control.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=ax_corr, annot_kws={"fontproperties": font_prop})
+    ax_corr.set_title("스펙 변수 간 상관관계", fontproperties=font_prop)
+
+    ax_corr.set_xticklabels(
+    ax_corr.get_xticklabels(),
+    fontproperties=font_prop,
+    rotation=45,
+    ha="right"
+    )
+    ax_corr.set_yticklabels(
+        ax_corr.get_yticklabels(),
+        fontproperties=font_prop
+    )
     st.pyplot(fig_corr)
+
 
 
