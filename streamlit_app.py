@@ -6,6 +6,14 @@ from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import seaborn as sns
 from statsmodels.stats.outliers_influence import variance_inflation_factor
+import matplotlib.font_manager as fm
+
+font_path = "fonts/KoPubWorldDotumMedium.ttf"
+font_prop = fm.FontProperties(fname=font_path)
+
+plt.rcParams["font.family"] = font_prop.get_name()
+plt.rcParams["axes.unicode_minus"] = False
+
 
 # =======================================================
 # 폰트 설정 (한글 깨짐 방지)
@@ -526,4 +534,5 @@ elif section == "2.3. 그래프":
     sns.heatmap(X_control.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=ax_corr)
     ax_corr.set_title("스펙 변수 간 상관관계")
     st.pyplot(fig_corr)
+
 
