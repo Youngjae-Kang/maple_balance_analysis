@@ -1,7 +1,7 @@
+import statsmodels.api as sm
 import streamlit as st
 import pandas as pd
 import numpy as np
-import statsmodels.api as sm
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -526,3 +526,4 @@ elif section == "2.3. 그래프":
     sns.heatmap(X_control.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=ax_corr)
     ax_corr.set_title("스펙 변수 간 상관관계")
     st.pyplot(fig_corr)
+
